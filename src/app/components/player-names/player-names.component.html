@@ -1,0 +1,12 @@
+<div class="player-names-container">
+    <h2>Enter Player Names</h2>
+    <div class="form-group">
+        <label for="player1">Player 1:</label>
+        <input type="text" id="player1" [(ngModel)]="player1Name">
+    </div>
+    <div class="form-group">
+        <label for="player2">Player 2:</label>
+        <input type="text" id="player2" [(ngModel)]="player2Name">
+    </div>
+    <button (click)="startGame()">Start Game</button>
+</div>

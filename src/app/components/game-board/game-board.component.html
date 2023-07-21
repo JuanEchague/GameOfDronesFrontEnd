@@ -1,0 +1,41 @@
+<div class="game-board-container">
+    <h2>{{ player1.name }} vs {{ player2.name }}</h2>
+    <div class="score">
+        <p>Score</p>
+        <p>{{ player1.name }}: {{ player1Score }}</p>
+        <p>{{ player2.name }}: {{ player2Score }}</p>
+    </div>
+    <app-round-result
+        *ngIf="showRoundResult"
+        [player1Move]="player1Move"
+        [player2Move]="player2Move"
+        [roundWinner]="roundWinner"
+        (roundResultDismissed)="onRoundResultDismissed()"></app-round-result>
+    <div class="moves" *ngIf="!showRoundResult">
+        <h3>{{ player1Name }}, choose your move:</h3>
+        <button (click)="onMoveSelected(player1, Move.Rock)">
+            <img src="assets/rock.png" alt="Rock" class="move-icon">
+        </button>
+        <button (click)="onMoveSelected(player1, Move.Paper)">
+            <img src="assets/paper.png" alt="Paper" class="move-icon">
+        </button>
+        <button (click)="onMoveSelected(player1, Move.Scissors)">
+            <img src="assets/scissors.png" alt="Scissors" class="move-icon">
+        </button>
+        <h3>{{ player2Name }}, choose your move:</h3>
+        <button (click)="onMoveSelected(player2, Move.Rock)">
+            <img src="assets/rock.png" alt="Rock" class="move-icon">
+        </button>
+        <button (click)="onMoveSelected(player2, Move.Paper)">
+            <img src="assets/paper.png" alt="Paper" class="move-icon">
+        </button>
+        <button (click)="onMoveSelected(player2, Move.Scissors)">
+            <img src="assets/scissors.png" alt="Scissors" class="move-icon">
+        </button>
+    </div>
+
+    <app-congratulations
+        *ngIf="showCongratulations"
+        [winnerName]="winnerName"
+        (congratulationsDismissed)="onCongratulationsDismissed()"></app-congratulations>
+</div>
