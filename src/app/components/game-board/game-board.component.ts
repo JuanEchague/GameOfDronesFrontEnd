@@ -9,8 +9,8 @@ import { GameService } from '../../services/game.service';
   styleUrls: ['./game-board.component.scss']
 })
 export class GameBoardComponent implements OnInit {
-  player1: Player = { id: 1, name: 'Player 1', move: Move.None }; 
-  player2: Player = { id: 2, name: 'Player 2', move: Move.None }; 
+  player1!: Player;
+  player2!: Player;
   player1Score: number = 0;
   player2Score: number = 0;
   showRoundResult = false;
@@ -19,15 +19,33 @@ export class GameBoardComponent implements OnInit {
   winnerName = '';
   player1Move: Move | undefined = Move.None;
   player2Move: Move | undefined = Move.None;
-  player1Name: string = this.player1.name;
-  player2Name: string = this.player2.name;
+  player1Name!: string;
+  player2Name!: string;
   Move = Move;
 
   constructor(private router: Router, private gameService: GameService) {  }
 
   ngOnInit() {
-    this.player1 = this.gameService.getPlayer1() || { id: 1, name: 'Player 1', move: Move.None };
-    this.player2 = this.gameService.getPlayer2() || { id: 2, name: 'Player 2', move: Move.None };
+    this.gameService.getPlayer1().subscribe(
+      (player1) => {
+        this.player1 = player1 || { id: 1, name: 'Player 1', move: Move.None };
+        this.player1Name = this.player1.name;
+      },
+      (error) => {
+        console.error('Error al obtener el jugador 1:', error);
+      }
+    );
+
+    this.gameService.getPlayer2().subscribe(
+      (player2) => {
+        this.player2 = player2 || { id: 2, name: 'Player 2', move: Move.None };
+        this.player2Name = this.player2.name;
+      },
+      (error) => {
+        console.error('Error al obtener el jugador 2:', error);
+      }
+    );
+
     this.player1Score = 0;
     this.player2Score = 0;
     this.showRoundResult = false;
