@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { Player } from '../models/player.model';
 
 @Injectable({
@@ -11,12 +12,15 @@ export class GameService {
   private player1: Player | undefined;
   private player2: Player | undefined;
   private winner: Player | undefined;
-  
+
   constructor(private http: HttpClient) {}
 
   setPlayers(player1: Player, player2: Player) {
     this.player1 = player1;
     this.player2 = player2;
+  }
+  getPlayerByName(name: string): Observable<Player> {
+    return this.http.get<Player>(`${this.apiUrl}/name/${name}`);
   }
 
   getPlayer1(): Observable<Player | undefined> {

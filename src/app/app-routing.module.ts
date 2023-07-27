@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: '', component: StartGameComponent },
   { path: 'player-names', component: PlayerNamesComponent },
   { path: 'game-board', component: GameBoardComponent },
-  { path: 'game-result', component: GameResultComponent }
+  { path: 'game-result', component: GameResultComponent },
+  { path: 'start-game', component: StartGameComponent }
 ];
 
 @NgModule({
