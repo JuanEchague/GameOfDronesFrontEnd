@@ -10,8 +10,8 @@ import { PlayerNamesComponent } from './components/player-names/player-names.com
 import { GameService } from './services/game.service';
 import { GameBoardComponent } from './components/game-board/game-board.component';
 import { GameResultComponent } from './components/game-result/game-result.component';
-import { RoundResultComponent } from './components/round-result/round-result.component';
-import { CongratulationsComponent } from './components/congratulations/congratulations.component';
+
+
 
 @NgModule({
   declarations: [
@@ -20,8 +20,7 @@ import { CongratulationsComponent } from './components/congratulations/congratul
     PlayerNamesComponent,
     GameBoardComponent,
     GameResultComponent,
-    RoundResultComponent,
-    CongratulationsComponent
+   
   ],
   imports: [
     BrowserModule,

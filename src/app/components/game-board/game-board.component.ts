@@ -19,8 +19,8 @@ export class GameBoardComponent implements OnInit {
   showMoveButtons = true;
   roundWinner: Player | null = null;
   winnerName = '';
-  player1Move: Move | undefined = Move.None;
-  player2Move: Move | undefined = Move.None;
+  player1Move: Move = Move.None; 
+  player2Move: Move = Move.None;
   player1Name!: string;
   player2Name!: string;
   Move = Move;
@@ -69,7 +69,6 @@ export class GameBoardComponent implements OnInit {
         this.player2Move = move;
       }
   
-      
       if (this.player1Move !== Move.None && this.player2Move !== Move.None) {
         this.calculateRoundWinner();
       }
@@ -100,6 +99,7 @@ export class GameBoardComponent implements OnInit {
       }
     
       if (this.player1Score >= 3 || this.player2Score >= 3) {
+        this.showRoundResult = false;
         // Si se ha definido un ganador de la partida (tres rondas ganadas por un jugador)
         this.showCongratulations = true;
         this.winnerName = this.player1Score >= 3 ? this.player1.name : this.player2.name;
@@ -109,22 +109,21 @@ export class GameBoardComponent implements OnInit {
         this.gameService.updatePlayerScore(winnerId).subscribe(() => {
           console.log('Puntaje del jugador ganador actualizado correctamente.');
         });
-    
-        this.resetGame();
-      } else {
-        // Si no se ha definido un ganador, restablecer los movimientos después de calcular el ganador
-        this.player1Move = Move.None;
-        this.player2Move = Move.None;
-        this.showRoundResult = false;
       }
+    
+      // Restablecer los movimientos después de calcular el ganador
+      this.player1Move = Move.None;
+      this.player2Move = Move.None;
     }
 
     onRoundResultDismissed() {
       this.showRoundResult = false;
-      this.showMoveButtons = true;
+      if (!this.showCongratulations) {
+        this.showMoveButtons = true;
+      }
   }
   
-
+ 
     onCongratulationsDismissed() {
       this.showMoveButtons = true; // Mostrar los botones de selección de movimiento
       this.showCongratulations = false;
@@ -152,9 +151,12 @@ export class GameBoardComponent implements OnInit {
   }
   resetGame() {
     this.player1Score = 0;
-  this.player2Score = 0;
-  this.player1 = { id: 1, name: 'Player 1', move: Move.None };
-  this.player2 = { id: 2, name: 'Player 2', move: Move.None };
-  this.router.navigate(['/player-names']);
+    this.player2Score = 0;
+    this.player1Move = Move.None;
+    this.player2Move = Move.None;
+    this.showRoundResult = false;
+    this.showCongratulations = false;
+    this.roundWinner = null;
+    this.winnerName = '';
   }
 }

@@ -1,7 +1,0 @@
-<div class="round-result-container">
-    <h2>Round Result</h2>
-    <p>{{ player1Move }} vs {{ player2Move }}</p>
-    <p *ngIf="!roundWinner">It's a tie!</p>
-    <p *ngIf="roundWinner">The winner is {{ roundWinner.name }}!</p>
-    <button (click)="dismissRoundResult()">Continue</button>
-</div>
