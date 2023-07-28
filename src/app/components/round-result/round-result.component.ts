@@ -7,9 +7,13 @@ import { Player } from '../../models/player.model';
   styleUrls: ['./round-result.component.scss']
 })
 export class RoundResultComponent {
-  @Input() player1Move?: string; // Agrega '?' para que sea opcional
-  @Input() player2Move?: string; // Agrega '?' para que sea opcional
-  @Input() roundWinner?: Player | null; // Agrega '?' para que sea opcional
+  @Input() player1Move?: string; 
+  @Input() player2Move?: string; 
+  @Input() roundWinner?: Player | null; 
 
   @Output() roundResultDismissed: EventEmitter<void> = new EventEmitter<void>();
+
+  dismissRoundResult() {
+    this.roundResultDismissed.emit();
+  }
 }

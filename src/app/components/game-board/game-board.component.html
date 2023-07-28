@@ -5,13 +5,17 @@
         <p>{{ player1.name }}: {{ player1Score }}</p>
         <p>{{ player2.name }}: {{ player2Score }}</p>
     </div>
+
+    <!-- Resultado de la ronda -->
     <app-round-result
         *ngIf="showRoundResult"
         [player1Move]="player1Move"
         [player2Move]="player2Move"
         [roundWinner]="roundWinner"
         (roundResultDismissed)="onRoundResultDismissed()"></app-round-result>
-    <div class="moves" *ngIf="!showRoundResult">
+    <!-- Selección de movimientos -->
+    <div class="moves" *ngIf="!showRoundResult && !showCongratulations &&
+        showMoveButtons">
         <h3>{{ player1Name }}, choose your move:</h3>
         <button (click)="onMoveSelected(player1, Move.Rock)">
             <img src="assets/rock.png" alt="Rock" class="move-icon">
@@ -22,6 +26,7 @@
         <button (click)="onMoveSelected(player1, Move.Scissors)">
             <img src="assets/scissors.png" alt="Scissors" class="move-icon">
         </button>
+
         <h3>{{ player2Name }}, choose your move:</h3>
         <button (click)="onMoveSelected(player2, Move.Rock)">
             <img src="assets/rock.png" alt="Rock" class="move-icon">
@@ -34,8 +39,15 @@
         </button>
     </div>
 
-    <app-congratulations
-        *ngIf="showCongratulations"
-        [winnerName]="winnerName"
-        (congratulationsDismissed)="onCongratulationsDismissed()"></app-congratulations>
+    <!-- Mensaje de felicitaciones y botones de continuar o volver al inicio -->
+    <div *ngIf="showCongratulations">
+        <h2>¡{{winnerName}} es el ganador de la partida!</h2>
+        <button (click)="onRestartGame()">Volver al inicio</button>
+        <button (click)="onContinuePlaying()">Continuar jugando</button>
+    </div>
+
+    <!-- Botón de continuar para la siguiente ronda -->
+    <div *ngIf="!showRoundResult && !showCongratulations && !showMoveButtons">
+        <button (click)="onContinueRound()">Continuar</button>
+    </div>
 </div>

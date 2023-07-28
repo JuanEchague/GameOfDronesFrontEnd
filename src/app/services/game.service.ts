@@ -12,31 +12,28 @@ export class GameService {
   private player1: Player | undefined;
   private player2: Player | undefined;
   private winner: Player | undefined;
+  private player1Name: string | undefined;
+  private player2Name: string | undefined;
 
   constructor(private http: HttpClient) {}
 
   setPlayers(player1: Player, player2: Player) {
     this.player1 = player1;
     this.player2 = player2;
+    this.player1Name = player1.name;
+    this.player2Name = player2.name;
   }
+ 
   getPlayerByName(name: string): Observable<Player> {
     return this.http.get<Player>(`${this.apiUrl}/name/${name}`);
-  }
-
-  getPlayer1(): Observable<Player | undefined> {
-    return this.http.get<Player>(`${this.apiUrl}/1`);
-  }
-
-  getPlayer2(): Observable<Player | undefined> {
-    return this.http.get<Player>(`${this.apiUrl}/2`);
   }
 
   createPlayer(player: Player): Observable<Player> {
     return this.http.post<Player>(`${this.apiUrl}`, player);
   }
 
-  updatePlayer(player: Player): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${player.id}`, player);
+  updatePlayerScore(playerId: number): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/UpdateScore/${playerId}`, null);
   }
 
   deletePlayer(playerId: number): Observable<void> {

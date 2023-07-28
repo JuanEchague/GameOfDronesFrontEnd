@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Player, Move } from '../../models/player.model';
 import { GameService } from '../../services/game.service';
 
+
+
 @Component({
   selector: 'app-player-names',
   templateUrl: './player-names.component.html',
@@ -24,7 +26,9 @@ export class PlayerNamesComponent {
       this.gameService.setPlayers(player1, player2);
 
       // Navega al componente del tablero del juego
-      this.router.navigate(['/game-board']);
+      this.router.navigate(['/game-board'], {
+        queryParams: { player1Name: this.player1Name, player2Name: this.player2Name }
+      });
     } else {
       alert('Please enter both player names before starting the game.');
     }
