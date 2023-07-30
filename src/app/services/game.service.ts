@@ -8,7 +8,7 @@ import { Player } from '../models/player.model';
   providedIn: 'root'
 })
 export class GameService {
-  private readonly apiUrl = 'https://localhost:7186/api/Players';
+  private readonly apiUrl = 'https://www.gameofdrones.somee.com/api/Players';
  
   
   constructor(private http: HttpClient) {}
