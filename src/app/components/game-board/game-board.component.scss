@@ -1,67 +1,134 @@
-/* Estilos generales para el tablero del juego */
+/* Estilos para el contenedor principal */
 .game-board-container {
-  text-align: center;
+  position: relative;
+  max-width: 1000px;
   margin: 0 auto;
-  max-width: 500px;
   padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 24px;
+  margin-top: 50px;
 }
 
 /* Estilos para el marcador de puntaje */
 .score {
-  margin-bottom: 20px;
-}
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 
-.score p {
-  margin: 5px;
-}
-
-/* Estilos para la sección de selección de movimientos */
-.moves {
-  margin-bottom: 20px;
-}
-
-.moves h3 {
-  margin-bottom: 10px;
-}
-
-.move-icon {
-  width: 60px;
-  height: 60px;
-  margin: 5px;
-  cursor: pointer;
+  p {
+    font-size: 18px;
+    margin: 5px 0;
+    padding: 0 10px;
+  }
 }
 
 /* Estilos para el resultado de la ronda */
 .round-result-container {
-  border: 2px solid #ccc;
-  padding: 10px;
-  margin-top: 20px;
-  text-align: center;
+  margin-bottom: 20px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+/* Estilos para la selección de movimientos */
+.moves {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  h3 {
+    width: 100%;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    margin: 10px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
 }
 
 /* Estilos para el mensaje de felicitaciones y botones */
 .congratulations-container {
-  margin-top: 20px;
+  margin-bottom: 20px;
+
+  h2 {
+
+    font-size: 24px;
+    margin-bottom: 50px;
+  }
+
+  .continue-buttons {
+    display: flex;
+    justify-content: center;
+
+    button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
 }
 
-.congratulations-container h2 {
-  margin-bottom: 10px;
-}
-
-.congratulations-container button {
-  margin-right: 10px;
-}
-
-/* Estilos para los botones de continuar y volver al inicio */
+/* Estilos para el botón de continuar para la siguiente ronda */
 .continue-buttons {
-  margin-top: 20px;
-}
-
-.continue-buttons button {
-  margin-right: 10px;
-}
-
-/* Estilos para ocultar elementos */
-.hidden {
-  display: none;
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer;
+   
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
 }

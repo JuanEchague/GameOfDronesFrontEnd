@@ -1,0 +1,30 @@
+<div class="game-result-container">
+    <button class="back-button" (click)="goToStartGame()">Back to Start Game</button>
+    <h2>Scores</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Name</th>
+                <th>Score</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let player of players; let i= index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.score }}</td>
+                <td>
+                    <button class="delete-btn"
+                        (click)="deletePlayer(player.id)">
+                        <img src="assets/delete.png" alt="delete">
+                    </button>
+                    <button class="reset-btn" (click)="resetPlayer(player.id)">
+                        <img src="assets/reset.png" alt="reset">
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

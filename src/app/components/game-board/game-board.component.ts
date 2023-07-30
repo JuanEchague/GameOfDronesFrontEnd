@@ -15,7 +15,7 @@ export class GameBoardComponent implements OnInit {
   player1Score: number = 0;
   player2Score: number = 0;
   showRoundResult = false;
-  showCongratulations = false;
+  showCongratulations = false;// Mostrar u ocultar botones de selección de movimiento
   showMoveButtons = true;
   roundWinner: Player | null = null;
   winnerName = '';
@@ -42,7 +42,7 @@ export class GameBoardComponent implements OnInit {
     // Obtener los jugadores utilizando los nombres obtenidos
     this.gameService.getPlayerByName(this.player1Name).subscribe((player1) => {
       this.player1 = player1;
-    });
+          });
 
     this.gameService.getPlayerByName(this.player2Name).subscribe((player2) => {
       this.player2 = player2;
@@ -76,7 +76,7 @@ export class GameBoardComponent implements OnInit {
 
     calculateRoundWinner() {
       this.showRoundResult = true;
-      this.showMoveButtons = false; // Ocultar botones de selección de movimiento
+      this.showMoveButtons = false; 
       if (!this.player1 || !this.player2) {
         return;
       }
@@ -125,7 +125,7 @@ export class GameBoardComponent implements OnInit {
   
  
     onCongratulationsDismissed() {
-      this.showMoveButtons = true; // Mostrar los botones de selección de movimiento
+      this.showMoveButtons = true; 
       this.showCongratulations = false;
     }
     onContinueRound() {
@@ -147,7 +147,7 @@ export class GameBoardComponent implements OnInit {
     this.player1Move = Move.None;
     this.player2Move = Move.None;
     this.showCongratulations = false;
-    this.showMoveButtons = true; // Mostrar los botones de selección de movimiento
+    this.showMoveButtons = true; 
   }
   resetGame() {
     this.player1Score = 0;

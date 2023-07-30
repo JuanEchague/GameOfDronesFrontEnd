@@ -10,19 +10,15 @@ import { Player } from '../models/player.model';
 export class GameService {
   private readonly apiUrl = 'https://localhost:7186/api/Players';
  
-  private winner: Player | undefined;
   
-
   constructor(private http: HttpClient) {}
-
- 
- 
+  
   getPlayerByName(name: string): Observable<Player> {
     return this.http.get<Player>(`${this.apiUrl}/name/${name}`);
   }
 
-  createPlayer(player: Player): Observable<Player> {
-    return this.http.post<Player>(`${this.apiUrl}`, player);
+  getPlayerScores():Observable<Player[]>{
+  return this.http.get<Player[]>(`${this.apiUrl}`);
   }
 
   updatePlayerScore(playerId: number): Observable<void> {
@@ -32,10 +28,7 @@ export class GameService {
   deletePlayer(playerId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${playerId}`);
   }
-
-  
-
- 
-
- 
+  resetPlayerScore(playerId: number): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${playerId}/reset`, null);
+  }
 }

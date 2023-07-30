@@ -46,16 +46,16 @@
 
     <!-- Mensaje de felicitaciones y botones -->
     <div class="congratulations-container" *ngIf="showCongratulations">
-        <h2>¡{{ winnerName }} es el ganador de la partida!</h2>
+        <h2>¡{{ winnerName }} is the winner of the game!</h2>
         <div class="continue-buttons">
-            <button (click)="onRestartGame()">Volver al inicio</button>
-            <button (click)="onContinuePlaying()">Continuar jugando</button>
+            <button (click)="onRestartGame()">Exit</button>
+            <button (click)="onContinuePlaying()">Continue playing</button>
         </div>
     </div>
 
     <!-- Botón de continuar para la siguiente ronda -->
     <div class="continue-buttons" *ngIf="!showRoundResult &&
         !showCongratulations && !showMoveButtons">
-        <button (click)="onContinueRound()">Continuar</button>
+        <button (click)="onContinueRound()">Continue</button>
     </div>
 </div>

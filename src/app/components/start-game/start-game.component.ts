@@ -9,7 +9,10 @@ import { Router } from '@angular/router';
 export class StartGameComponent {
 
   constructor(private router: Router) {}
-
+  
+  scores(){
+    this.router.navigate(['/game-result'])
+  }
   startGame() {
     // Navega al componente donde los jugadores ingresarán sus nombres
     this.router.navigate(['/player-names']);
