@@ -14,7 +14,6 @@ export class StartGameComponent {
     this.router.navigate(['/game-result'])
   }
   startGame() {
-    // Navega al componente donde los jugadores ingresarán sus nombres
-    this.router.navigate(['/player-names']);
+   this.router.navigate(['/player-names']);
   }
 }

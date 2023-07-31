@@ -100,14 +100,13 @@ export class GameBoardComponent implements OnInit {
     
       if (this.player1Score >= 3 || this.player2Score >= 3) {
         this.showRoundResult = false;
-        // Si se ha definido un ganador de la partida (tres rondas ganadas por un jugador)
         this.showCongratulations = true;
         this.winnerName = this.player1Score >= 3 ? this.player1.name : this.player2.name;
     
         // Actualizar puntaje del jugador ganador en el backend
         const winnerId = this.player1Score >= 3 ? this.player1.id : this.player2.id;
         this.gameService.updatePlayerScore(winnerId).subscribe(() => {
-          console.log('Puntaje del jugador ganador actualizado correctamente.');
+          
         });
       }
     

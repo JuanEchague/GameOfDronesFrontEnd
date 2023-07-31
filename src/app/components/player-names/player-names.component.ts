@@ -16,10 +16,8 @@ export class PlayerNamesComponent {
   constructor(private router: Router) {}
 
   startGame() {
-    // Verifica que ambos nombres hayan sido ingresados antes de iniciar el juego
-    if (this.player1Name.trim() !== '' && this.player2Name.trim() !== '') {
-      // Navega al componente del tablero del juego
-      this.router.navigate(['/game-board'], {
+      if (this.player1Name.trim() !== '' && this.player2Name.trim() !== '') {
+        this.router.navigate(['/game-board'], {
         queryParams: { player1Name: this.player1Name, player2Name: this.player2Name }
       });
     } else {

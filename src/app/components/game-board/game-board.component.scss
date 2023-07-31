@@ -1,4 +1,4 @@
-/* Estilos para el contenedor principal */
+/* Main Container */
 .game-board-container {
   position: relative;
   max-width: 1000px;
@@ -12,7 +12,7 @@ h2 {
   margin-top: 50px;
 }
 
-/* Estilos para el marcador de puntaje */
+/* Score */
 .score {
   position: absolute;
   top: 20px;
@@ -28,7 +28,7 @@ h2 {
   }
 }
 
-/* Estilos para el resultado de la ronda */
+/* Round result */
 .round-result-container {
   margin-bottom: 20px;
 
@@ -57,7 +57,7 @@ h2 {
   }
 }
 
-/* Estilos para la selección de movimientos */
+/* Move selection */
 .moves {
   display: flex;
   flex-wrap: wrap;
@@ -85,7 +85,7 @@ h2 {
   }
 }
 
-/* Estilos para el mensaje de felicitaciones y botones */
+/* Congratulations message */
 .congratulations-container {
   margin-bottom: 20px;
 
@@ -116,7 +116,7 @@ h2 {
   }
 }
 
-/* Estilos para el botón de continuar para la siguiente ronda */
+/* Exit and continue playing */
 .continue-buttons {
   button {
     padding: 10px 20px;
